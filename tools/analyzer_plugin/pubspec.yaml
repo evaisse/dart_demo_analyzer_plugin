@@ -1,0 +1,10 @@
+name: demo_analyzer_plugin_loader
+version: 0.0.1
+publish_to: "none"
+
+environment:
+  sdk: ">=2.19.0 <4.0.0"
+
+dependencies:
+  demo_analyzer_plugin:
+    path: ./../..
