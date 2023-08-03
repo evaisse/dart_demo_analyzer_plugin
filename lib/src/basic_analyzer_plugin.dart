@@ -35,34 +35,34 @@ class BasicAnalyzerPlugin extends ServerPlugin with AssistsMixin, DartAssistsMix
   }) async {
     if (path.isEmpty) return Future.value();
 
-    final resolvedUnitResult = await getResolvedUnitResult(path);
-
-    try {
-      throw 'this is a demo';
-    } catch (e, stackTrace) {
-      channel.sendNotification(
-        PluginErrorParams(
-          false,
-          'Unexpected error: ${e.toString()}',
-          stackTrace.toString(),
-        ).toNotification(),
-      );
-    }
+    // final resolvedUnitResult = await getResolvedUnitResult(path);
     //
-    // channel.sendNotification(
-    //   AnalysisErrorsParams(
-    //     path,
-    //     [
-    //       AnalysisError(
-    //         AnalysisErrorSeverity.ERROR,
-    //         AnalysisErrorType.LINT,
-    //         Location(path, 0, 1, 0, 1),
-    //         "bla bla bla",
-    //         "xxxcode",
-    //       )
-    //     ],
-    //   ).toNotification(),
-    // );
+    // try {
+    //   throw 'this is a demo';
+    // } catch (e, stackTrace) {
+    //   channel.sendNotification(
+    //     PluginErrorParams(
+    //       false,
+    //       'Unexpected error: ${e.toString()}',
+    //       stackTrace.toString(),
+    //     ).toNotification(),
+    //   );
+    // }
+
+    channel.sendNotification(
+      AnalysisErrorsParams(
+        path,
+        [
+          AnalysisError(
+            AnalysisErrorSeverity.ERROR,
+            AnalysisErrorType.LINT,
+            Location(path, 0, 1, 0, 1),
+            "bla bla bla",
+            "xxxcode",
+          )
+        ],
+      ).toNotification(),
+    );
   }
 
   @override
